@@ -13,6 +13,7 @@ BASE_ATTRIBUTES = [
     "secondary-family",
     "generation",
     "battle-rank",
+    "speciality",
 ]
 
 # ---- Main
@@ -35,11 +36,11 @@ def get_kryptomon_images(kmon_ids):
     urls = [f"/kryptomons/images/{kmon_id}" for kmon_id in kmon_ids]
     with ThreadPoolExecutor(max_workers=3) as pool:
         res = pool.map(api_call, urls)
-    return {
-        kmon_id: (im.get("junior") or im.get("baby") or im.get("egg")).get("png-image")
+    return [
+        (im.get("junior") or im.get("baby") or im.get("egg")).get("png-image")
         for kmon_id, result in zip(kmon_ids, res)
         if (im := result.get("data"))
-    }
+    ]
 
 
 def get_kryptomon_game_stats(kmon_ids):

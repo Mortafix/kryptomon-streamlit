@@ -1,0 +1,28 @@
+@media (max-width: 1100px) {
+
+    .image img {
+        padding: 0.5rem;
+    }
+
+    .info p:first-child {
+        font-size: 1rem;
+        margin-bottom: -0.5rem;
+    }
+
+    .info p:first-child span {
+        font-size: 0.7rem;
+    }
+
+    .info img {
+        width: 1.5rem;
+    }
+
+    .rank p {
+        font-size: 1rem;
+    }
+
+    .rank p:first-child {
+        font-size: 2rem;
+        margin-bottom: -1.5rem;
+    }
+}

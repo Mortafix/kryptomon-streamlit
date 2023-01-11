@@ -1,4 +1,13 @@
 import streamlit as st
+from utils.components import remove_streamlit_menu
+
+st.set_page_config(
+    page_title="Kryptomon API Viewer",
+    page_icon="👾",
+    layout="centered",
+)
+
+remove_streamlit_menu()
 
 
 def app():
