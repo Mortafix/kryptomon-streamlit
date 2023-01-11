@@ -1,22 +1,18 @@
-.kryptomon-list {
-    margin-top: -1rem;
-}
-
 .kryptomon {
     background-color: white;
     color: #2d2d2d;
     display: flex;
     justify-content: space-evenly;
     border-radius: 1rem;
-    margin-block: 1rem;
+    margin-block: 0.5rem;
     box-shadow: 3px 3px 4px #606060;
     position: relative;
 }
 
 .position {
     position: absolute;
-    top: 0.2rem;
-    left: 0.5rem;
+    top: 0.3rem;
+    left: 0.7rem;
     color: #cacaca;
 }
 

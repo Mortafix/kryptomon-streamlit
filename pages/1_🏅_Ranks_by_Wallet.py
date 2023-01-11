@@ -16,12 +16,17 @@ local_css("static/css/mobile.css")
 
 def app():
     st.title("💼 → 🏅 | Ranks by Wallet")
-    wallet = st.text_input("Wallet", placeholder="Wallet to search", max_chars=42)
+    wallet = st.text_input(
+        "Wallet",
+        placeholder="Wallet to search",
+        max_chars=42,
+        label_visibility="collapsed",
+    )
 
     if not wallet:
         return
 
-    with st.spinner("Searching"):
+    with st.spinner("Scanning wallet"):
         dashboard = get_dashboard_wallet(wallet)
         if not dashboard.get("success"):
             return st.error("**Wallet** not found!", icon="🫣")

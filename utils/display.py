@@ -20,7 +20,6 @@ def display_kryptomon(kryptomon, image, stats, component=st, i=None):
     stats = stats.get("levels")
     level = stats and round(sum(stats.values()) / len(stats)) or 0
     return f"""
-    <div class='kryptomon'>
         <div class='position'>{i if i is not None else ''}</div>
         <div class='image'><img src='{image}'></div>
         <div class='info'>
@@ -37,16 +36,13 @@ def display_kryptomon(kryptomon, image, stats, component=st, i=None):
         <div class='rank'>
             <p>{rank.get('rank')}</p>
             <p>{round(rank.get('points'))}</p>
-        </div>
-    </div>"""
+        </div>"""
 
 
 def kryptomons_list(kryptomons, component=st):
-    kmon_ids = [kmon.get("kryptomon-id") for kmon in kryptomons]
-    images = get_kryptomon_images(kmon_ids)
-    levels = get_kryptomon_game_stats(kmon_ids)
-    html_list = "".join(
-        display_kryptomon(kmon, image, stat, i=i)
-        for i, (kmon, image, stat) in enumerate(zip(kryptomons, images, levels), 1)
-    )
-    div(component, _class="kryptomon-list", text=html_list)
+    for i, kmon in enumerate(kryptomons, 1):
+        kmon_id = kmon.get("kryptomon-id")
+        image = get_kryptomon_images(kmon_id)
+        in_game_stats = get_kryptomon_game_stats(kmon_id)
+        html_kmon = display_kryptomon(kmon, image, in_game_stats, i=i)
+        div(component, _class="kryptomon", text=html_kmon)
