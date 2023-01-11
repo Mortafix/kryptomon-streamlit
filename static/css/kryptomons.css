@@ -1,3 +1,7 @@
+.kryptomon-list {
+    margin-top: -1rem;
+}
+
 .kryptomon {
     background-color: white;
     color: #2d2d2d;
@@ -30,7 +34,6 @@ img {
 .info p:first-child {
     font-size: 1.5rem;
     font-weight: bold;
-    margin-bottom: -1rem;
 }
 
 .info p:first-child span {
@@ -40,6 +43,16 @@ img {
 
 .info p {
     margin: 0;
+    margin-bottom: -0.5rem;
+}
+
+.info p:last-child {
+    margin: 0;
+}
+
+.info p:last-child span {
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .info img {
