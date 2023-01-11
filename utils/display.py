@@ -11,7 +11,7 @@ ELEMENTS = {
 }
 
 
-def display_kryptomon(kryptomon, image, stats, component=st):
+def display_kryptomon(kryptomon, image, stats, component=st, i=None):
     primary_fam = kryptomon.get("primary-family")
     secondary_fam = kryptomon.get("secondary-family")
     primary = ELEMENTS.get(primary_fam, primary_fam)
@@ -21,6 +21,7 @@ def display_kryptomon(kryptomon, image, stats, component=st):
     level = stats and round(sum(stats.values()) / len(stats)) or 0
     return f"""
     <div class='kryptomon'>
+        <div class='position'>{i if i is not None else ''}</div>
         <div class='image'><img src='{image}'></div>
         <div class='info'>
             <p>
@@ -45,7 +46,7 @@ def kryptomons_list(kryptomons, component=st):
     images = get_kryptomon_images(kmon_ids)
     levels = get_kryptomon_game_stats(kmon_ids)
     html_list = "".join(
-        display_kryptomon(kmon, image, stat)
-        for kmon, image, stat in zip(kryptomons, images, levels)
+        display_kryptomon(kmon, image, stat, i=i)
+        for i, (kmon, image, stat) in enumerate(zip(kryptomons, images, levels), 1)
     )
     div(component, _class="kryptomon-list", text=html_list)
