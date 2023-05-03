@@ -18,6 +18,8 @@ def display_kryptomon(kryptomon, image, stats, component=st, i=None):
     secondary = ELEMENTS.get(secondary_fam, secondary_fam)
     rank = kryptomon.get("battle-rank")
     stats = stats.get("levels")
+    if stats:
+        stats.pop("constitution", None)
     level = stats and round(sum(stats.values()) / len(stats)) or 0
     return f"""
         <div class='position'>{i if i is not None else ''}</div>

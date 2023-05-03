@@ -22,7 +22,7 @@ def app():
     )
 
     st.title(f"🏆 Learboard | Top `{top}`")
-    st.info("Leaderboard is updated every **10** minutes", icon="🔄")
+    st.info("Leaderboard is updated every **2** minutes", icon="🔄")
 
     with st.spinner("Finding strongest kryptomons"):
         data = get_top_kryptomons()

@@ -37,7 +37,7 @@ def get_kryptomon_images(kmon_id):
     return image.get("png-image")
 
 
-@st.cache(ttl=LITTLE_DELAY, show_spinner=False)
+@st.cache(ttl=LITTLE_DELAY, show_spinner=False, allow_output_mutation=True)
 def get_kryptomon_game_stats(kmon_id):
     return api_call(f"/kryptomons/game/stats/{kmon_id}").get("data")
 

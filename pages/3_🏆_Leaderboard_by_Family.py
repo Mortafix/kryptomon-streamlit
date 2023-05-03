@@ -30,7 +30,7 @@ def app():
     st.title(f"🏆 Learboard by Family | Top `{top}`")
     if primary_fam or secondary_fam:
         st.header(f"1️⃣ {primary_fam or '_'} | 2️⃣ {secondary_fam or '_'}")
-    st.info("Leaderboard is updated every **10** minutes", icon="🔄")
+    st.info("Leaderboard is updated every **2** minutes", icon="🔄")
 
     with st.spinner("Finding strongest kryptomons"):
         primary = primary_fam.lower() or None
