@@ -1,3 +1,5 @@
+from re import search
+
 import streamlit as st
 from utils.api import get_kryptomon_game_stats, get_kryptomon_images
 from utils.components import div
@@ -16,7 +18,8 @@ def display_kryptomon(kryptomon, image, stats, component=st, i=None):
     secondary_fam = kryptomon.get("secondary-family")
     primary = ELEMENTS.get(primary_fam, primary_fam)
     secondary = ELEMENTS.get(secondary_fam, secondary_fam)
-    rank = kryptomon.get("battle-rank")
+    battle_rank = kryptomon.get("battle-rank")
+    rank, rank_points = search(r"(.+)\s\((\d+\.\d+)\)", battle_rank).groups()
     stats = stats.get("levels")
     if stats:
         stats.pop("constitution", None)
@@ -36,8 +39,8 @@ def display_kryptomon(kryptomon, image, stats, component=st, i=None):
             <p>Level <span>{level}</span></p>
         </div>
         <div class='rank'>
-            <p>{rank.get('rank')}</p>
-            <p>{round(rank.get('points'))}</p>
+            <p>{rank}</p>
+            <p>{round(float(rank_points))}</p>
         </div>"""
 
 
